@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.16)
 
-project(muduo C CXX)
+project(muduo VERSION 2.0.2 LANGUAGES C CXX)
 
 enable_testing()
 
@@ -10,7 +10,7 @@ endif()
 
 # only build examples if this is the main project
 if(CMAKE_PROJECT_NAME STREQUAL "muduo")
-  option(MUDUO_BUILD_EXAMPLES "Build Muduo examples" ON)
+  # option(MUDUO_BUILD_EXAMPLES "Build Muduo examples" ON)
 endif()
 
 set(CXX_FLAGS
@@ -105,6 +105,32 @@ message(STATUS "CXX_FLAGS = " ${CMAKE_CXX_FLAGS} " " ${CMAKE_CXX_FLAGS_${BUILD_T
 
 add_subdirectory(muduo/base)
 add_subdirectory(muduo/net)
+
+install(EXPORT muduoTargets
+        FILE muduoTargets.cmake
+        NAMESPACE muduo::
+        DESTINATION lib/cmake/muduo)
+
+# 生成并安装配置文件
+include(CMakePackageConfigHelpers)
+
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/muduoConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/muduoConfig.cmake"
+    INSTALL_DESTINATION lib/cmake/muduo
+)
+
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/muduoConfigVersion.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY AnyNewerVersion
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/muduoConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/muduoConfigVersion.cmake"
+    DESTINATION lib/cmake/muduo
+)
 
 if(MUDUO_BUILD_EXAMPLES)
   add_subdirectory(contrib)

@@ -34,8 +34,14 @@ target_link_libraries(muduo_net muduo_base)
 #target_link_libraries(muduo_net_cpp11 muduo_base_cpp11)
 #set_target_properties(muduo_net_cpp11 PROPERTIES COMPILE_FLAGS "-std=c++0x")
 
-install(TARGETS muduo_net DESTINATION lib)
+# install(TARGETS muduo_net DESTINATION lib)
 #install(TARGETS muduo_net_cpp11 DESTINATION lib)
+install(TARGETS muduo_net
+        EXPORT muduoTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+        INCLUDES DESTINATION include)
 
 set(HEADERS
   Buffer.h

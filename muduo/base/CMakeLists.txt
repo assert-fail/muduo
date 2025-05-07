@@ -23,8 +23,14 @@ target_link_libraries(muduo_base pthread rt)
 #target_link_libraries(muduo_base_cpp11 pthread rt)
 #set_target_properties(muduo_base_cpp11 PROPERTIES COMPILE_FLAGS "-std=c++0x")
 
-install(TARGETS muduo_base DESTINATION lib)
+# install(TARGETS muduo_base DESTINATION lib)
 #install(TARGETS muduo_base_cpp11 DESTINATION lib)
+install(TARGETS muduo_base
+        EXPORT muduoTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+        INCLUDES DESTINATION include)
 
 file(GLOB HEADERS "*.h")
 install(FILES ${HEADERS} DESTINATION include/muduo/base)

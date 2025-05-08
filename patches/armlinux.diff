@@ -127,11 +127,11 @@ index 2c3f1c4..73d90fd 100644
 --- a/muduo/base/tests/CMakeLists.txt
 +++ b/muduo/base/tests/CMakeLists.txt
 @@ -2,7 +2,7 @@
- target_link_libraries(asynclogging_test muduo_base)
+ target_link_libraries(asynclogging_test base)
  
  add_executable(atomic_unittest Atomic_unittest.cc)
--# target_link_libraries(atomic_unittest muduo_base)
-+target_link_libraries(atomic_unittest muduo_base)
+-# target_link_libraries(atomic_unittest base)
++target_link_libraries(atomic_unittest base)
  
  add_executable(blockingqueue_test BlockingQueue_test.cc)
- target_link_libraries(blockingqueue_test muduo_base)
+ target_link_libraries(blockingqueue_test base)

@@ -16,16 +16,16 @@ set(base_SRCS
   TimeZone.cc
   )
 
-add_library(muduo_base ${base_SRCS})
-target_link_libraries(muduo_base pthread rt)
+add_library(base ${base_SRCS})
+target_link_libraries(base pthread rt)
 
 #add_library(muduo_base_cpp11 ${base_SRCS})
 #target_link_libraries(muduo_base_cpp11 pthread rt)
 #set_target_properties(muduo_base_cpp11 PROPERTIES COMPILE_FLAGS "-std=c++0x")
 
-# install(TARGETS muduo_base DESTINATION lib)
+# install(TARGETS base DESTINATION lib)
 #install(TARGETS muduo_base_cpp11 DESTINATION lib)
-install(TARGETS muduo_base
+install(TARGETS base
         EXPORT muduoTargets
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib

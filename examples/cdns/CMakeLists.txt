@@ -1,5 +1,5 @@
 add_library(muduo_cdns Resolver.cc)
-target_link_libraries(muduo_cdns muduo_net)
+target_link_libraries(muduo_cdns net)
 target_link_libraries(muduo_cdns cares)
 
 install(TARGETS muduo_cdns DESTINATION lib)

@@ -83,16 +83,16 @@ index 6e250d4..a76404f 100644
 @@ -16,10 +16,10 @@ set(base_SRCS
    )
  
- add_library(muduo_base ${base_SRCS})
--target_link_libraries(muduo_base pthread rt)
-+target_link_libraries(muduo_base pthread)
+ add_library(base ${base_SRCS})
+-target_link_libraries(base pthread rt)
++target_link_libraries(base pthread)
  
  add_library(muduo_base_cpp11 ${base_SRCS})
 -target_link_libraries(muduo_base_cpp11 pthread rt)
 +target_link_libraries(muduo_base_cpp11 pthread)
  set_target_properties(muduo_base_cpp11 PROPERTIES COMPILE_FLAGS "-std=c++0x")
  
- install(TARGETS muduo_base DESTINATION lib)
+ install(TARGETS base DESTINATION lib)
 diff --git a/muduo/base/Condition.cc b/muduo/base/Condition.cc
 index f10ace3..73a1715 100644
 --- a/muduo/base/Condition.cc

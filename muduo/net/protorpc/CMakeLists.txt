@@ -21,7 +21,7 @@ endif()
 
 add_library(muduo_protorpc RpcChannel.cc RpcServer.cc)
 set_target_properties(muduo_protorpc PROPERTIES COMPILE_FLAGS "-Wno-error=shadow")
-target_link_libraries(muduo_protorpc muduo_protorpc_wire muduo_protobuf_codec muduo_net protobuf z)
+target_link_libraries(muduo_protorpc muduo_protorpc_wire muduo_protobuf_codec net protobuf z)
 
 if(TCMALLOC_LIBRARY)
   target_link_libraries(muduo_protorpc tcmalloc_and_profiler)

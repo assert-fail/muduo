@@ -1,5 +1,5 @@
 add_library(muduo_curl Curl.cc)
-target_link_libraries(muduo_curl muduo_net)
+target_link_libraries(muduo_curl net)
 target_link_libraries(muduo_curl curl)
 
 install(TARGETS muduo_curl DESTINATION lib)
